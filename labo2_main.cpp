@@ -20,15 +20,14 @@ void test (string nome_file) {
     high_resolution_clock::time_point t1, t2;
     double duration;
 
-
     for (int i=0; i<3; i++) {
-    vector<int> v2 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    insertionSort(v2);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>( t2 - t1 ).count();
-    cout << "insertion sort " << duration << endl;
-}
+        vector<int> v2 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        insertionSort(v2);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>( t2 - t1 ).count();
+        cout << "insertion sort " << duration << endl;
+    }
 
     for (int i=0; i<3; i++) {
         vector<int> v1 = v_disordinato;
@@ -38,109 +37,111 @@ void test (string nome_file) {
         duration = duration_cast<microseconds>( t2 - t1 ).count();
         cout << "selection sort " << duration << endl;
     }
-    for (int i=0; i<3; i++) {
-    vector<int> v3 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    bubbleSort(v3);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>( t2 - t1 ).count();
-    cout << "bubble sort " << duration << endl;
-}
 
     for (int i=0; i<3; i++) {
-    vector<int> v4 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    mergeSort(v4);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>( t2 - t1 ).count();
-    cout << "merge sort " << duration << endl;
-}
-    for (int i=0; i<3; i++) {
-    vector<int> v5 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    quickSortTrivial(v5);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(t2-t1).count();
-    cout << "quick banale sort " << duration << endl;
-}
-    for (int i=0; i<3; i++) {
-    vector<int> v6 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    quickSortRandom(v6);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(t2-t1).count();
-    cout << "quick rand sort " << duration << endl;
+        vector<int> v3 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        bubbleSort(v3);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>( t2 - t1 ).count();
+        cout << "bubble sort " << duration << endl;
     }
+
+    for (int i=0; i<3; i++) {
+        vector<int> v4 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        mergeSort(v4);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>( t2 - t1 ).count();
+        cout << "merge sort " << duration << endl;
+    }
+
+    for (int i=0; i<3; i++) {
+        vector<int> v5 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        quickSortTrivial(v5);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>(t2-t1).count();
+        cout << "quick banale sort " << duration << endl;
+    }
+
+    for (int i=0; i<3; i++) {
+        vector<int> v6 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        quickSortRandom(v6);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>(t2-t1).count();
+        cout << "quick rand sort " << duration << endl;
+    }
+
     cout << endl;
 }
 
 int main(int argc, char *argv[])
 {
-    //test("in-10.txt");
-    //test(string(argv[1]));
-//return 0;
+    test(string(argv[1]));
+    return 0;
 
-try {
-    string nome_file;
-    cout << "\nInserire il nome del file da cui leggere (es: in-1000.txt) > ";
-    cin >> nome_file;
-    if (!cin) throw runtime_error("Errore inserimento nome file\n");
-    vector<int> v_disordinato = leggiVettoreDaFile(nome_file);
-    cout << "\nInserire il nome del file su cui stampare le informazioni sull'esecuzione (es: out-1000.txt) > ";
-    cin >> nome_file;
-    if (!cin) throw runtime_error("Errore inserimento nome file\n");
-    ofstream ofs(nome_file.c_str()); // apertura di uno stream associato ad un file, in scrittura
-    stampaVettoreEDurataSuStream(v_disordinato, "\n\n====== Vettore disordinato ======\n\n", 0, ofs);
-    high_resolution_clock::time_point t1, t2;
-    double duration;
+    try {
+        string nome_file;
+        cout << "\nInserire il nome del file da cui leggere (es: in-1000.txt) > ";
+        cin >> nome_file;
+        if (!cin) throw runtime_error("Errore inserimento nome file\n");
+        vector<int> v_disordinato = leggiVettoreDaFile(nome_file);
+        cout << "\nInserire il nome del file su cui stampare le informazioni sull'esecuzione (es: out-1000.txt) > ";
+        cin >> nome_file;
+        if (!cin) throw runtime_error("Errore inserimento nome file\n");
+        ofstream ofs(nome_file.c_str()); // apertura di uno stream associato ad un file, in scrittura
+        stampaVettoreEDurataSuStream(v_disordinato, "\n\n====== Vettore disordinato ======\n\n", 0, ofs);
+        high_resolution_clock::time_point t1, t2;
+        double duration;
 
-    vector<int> v1 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    selectionSort(v1);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>( t2 - t1 ).count();
-    stampaVettoreEDurataSuStream(v1, "\n\n====== Vettore ordinato con selection sort ======\n\n", duration, ofs);
+        vector<int> v1 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        selectionSort(v1);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>( t2 - t1 ).count();
+        stampaVettoreEDurataSuStream(v1, "\n\n====== Vettore ordinato con selection sort ======\n\n", duration, ofs);
 
-    vector<int> v2 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    insertionSort(v2);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>( t2 - t1 ).count();
-    stampaVettoreEDurataSuStream(v2, "\n\n====== Vettore ordinato con insertion sort ======\n\n", duration, ofs);
+        vector<int> v2 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        insertionSort(v2);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>( t2 - t1 ).count();
+        stampaVettoreEDurataSuStream(v2, "\n\n====== Vettore ordinato con insertion sort ======\n\n", duration, ofs);
 
-    vector<int> v3 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    bubbleSort(v3);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>( t2 - t1 ).count();
-    stampaVettoreEDurataSuStream(v3, "\n\n====== Vettore ordinato con bubblesort ======\n\n", duration, ofs);
+        vector<int> v3 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        bubbleSort(v3);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>( t2 - t1 ).count();
+        stampaVettoreEDurataSuStream(v3, "\n\n====== Vettore ordinato con bubblesort ======\n\n", duration, ofs);
 
+        vector<int> v4 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        mergeSort(v4);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>( t2 - t1 ).count();
+        stampaVettoreEDurataSuStream(v4, "\n\n====== Vettore ordinato con mergesort ======\n\n", duration, ofs);
 
-    vector<int> v4 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    mergeSort(v4);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>( t2 - t1 ).count();
-    stampaVettoreEDurataSuStream(v4, "\n\n====== Vettore ordinato con mergesort ======\n\n", duration, ofs);
+        vector<int> v5 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        quickSortTrivial(v5);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>(t2-t1).count();
+        stampaVettoreEDurataSuStream(v5, "\n\n====== Vettore ordinato con quicksort con scelta del pivot banale ======\n\n", duration, ofs);
 
-    vector<int> v5 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    quickSortTrivial(v5);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(t2-t1).count();
-    stampaVettoreEDurataSuStream(v5, "\n\n====== Vettore ordinato con quicksort con scelta del pivot banale ======\n\n", duration, ofs);
+        vector<int> v6 = v_disordinato;
+        t1 = high_resolution_clock::now();
+        quickSortRandom(v6);
+        t2 = high_resolution_clock::now();
+        duration = duration_cast<microseconds>(t2-t1).count();
+        stampaVettoreEDurataSuStream(v6, "\n\n====== Vettore ordinato con quicksort randomizzato ======\n\n", duration, ofs);
 
-    vector<int> v6 = v_disordinato;
-    t1 = high_resolution_clock::now();
-    quickSortRandom(v6);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(t2-t1).count();
-    stampaVettoreEDurataSuStream(v6, "\n\n====== Vettore ordinato con quicksort randomizzato ======\n\n", duration, ofs);
-
-return 0;
-     }
-catch (runtime_error &msg)
-   {cerr << "Errore a runtime: " << msg.what() << endl;}
-catch (...)
-   {cerr << "Eccezione non riconosciuta\n";}
+        return 0;
+    }
+    catch (runtime_error &msg)
+        {cerr << "Errore a runtime: " << msg.what() << endl;}
+    catch (...)
+        {cerr << "Eccezione non riconosciuta\n";}
 }
