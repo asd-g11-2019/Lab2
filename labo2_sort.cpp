@@ -145,18 +145,18 @@ int part (vector<int>& v, int l, int r) {
     int i = l+1;
     for (int j=l+1; j<=r; j++)
         if (v[j] <= pivot) {
-            std::swap(v[i], v[j]);
+            scambia(v, i, j);
             i++;
         }
 
-    std::swap(v[i-1], v[l]);
+    scambia(v, i-1, l);
 
     return i-1;
 }
 
 int partRandom (vector<int>& v, int l, int r) {
     int random = (rand() % (r-l)) + l;
-    std::swap(v[random], v[l]);
+    scambia(v, random, l);
     return part(v, l, r);
 }
 
