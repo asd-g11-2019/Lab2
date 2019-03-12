@@ -1,3 +1,11 @@
+/*********************************/
+/*  Gruppo 11                    */
+/*                               */
+/*  Klodiana Breza   (S4712271)  */
+/*  Andrea Celotto   (S4676081)  */
+/*  Giovanni Minotti (S4396239)  */
+/*********************************/
+
 #include "labo2_sort.h"
 
 
@@ -140,35 +148,34 @@ void mergeSort(vector<int>& v)
 
 
 int part (vector<int>& v, int l, int r) {
-    int pivot = v[l];
+    int pivot = v[l]; // Il mio pivot e' il primo elemento dell'intervallo
 
-    int i = l+1;
-    for (int j=l+1; j<=r; j++)
-        if (v[j] <= pivot) {
-            scambia(v, i, j);
-            i++;
-        }
+    int i = l+1; // Parto a scrivere gli elementi dalla seconda posizione dell'intervallo
+    for (int j=i; j<=r; j++) // Parto a interare dalla seconda posizione dell'intervallo
+        if (v[j] <= pivot) // Se l'elemento e' minore del pivot
+            scambia(v, i++, j); // Posizione l'elemeno nella parte iniziale dell'intervallo (e incremento il contatore i che identifica la futura posizione del pivot)
 
-    scambia(v, i-1, l);
+    scambia(v, i-1, l); // Metto il pivot nella posizione giusta (suggerita dal contatore i)
 
-    return i-1;
+    return i-1; // Restituisco la posizione del pivot
 }
 
 int partRandom (vector<int>& v, int l, int r) {
-    int random = (rand() % (r-l)) + l;
-    scambia(v, random, l);
-    return part(v, l, r);
+    int random = (rand() % (r-l)) + l; // Ottengo un numero casuale da l a r
+    scambia(v, random, l); // Sposto il pivot scelto al primo posto per poter utilizzare il codice di part
+    return part(v, l, r); // Chiamo part con il pivot spostato
 }
 
 void quickSort (vector<int>& v, int l, int r, bool randPivot) {
-    if (l >= r)
-        return;
+    if (l >= r) // Se non posso piu' partizionare l'array
+        return; // Termino
 
-    int pivot_index = randPivot ? partRandom(v, l, r) : part(v, l, r);
+    int pivot_index = randPivot ? partRandom(v, l, r) : part(v, l, r); // Partiziono su indice causale se indicati, altrimenti sul primo
 
-    quickSort(v, l, pivot_index-1, randPivot);
-    quickSort(v, pivot_index+1, r, randPivot);
+    quickSort(v, l, pivot_index-1, randPivot); // Chiamo il quickSort sulla prima parte (minore del pivot)
+    quickSort(v, pivot_index+1, r, randPivot); // Chiamo il quickSort sulla seconda parte (maggiore del pivot)
 }
+
 
 /**************************************************************************************
 				QUICKSORT CON SCELTA "BANALE" DEL PIVOT
@@ -179,15 +186,13 @@ void quickSortTrivial(vector<int>& v) {
 }
 
 
-
-
 /**************************************************************************************
 				QUICKSORT RANDOMIZZATO
 ***************************************************************************************/
 
 void quickSortRandom(vector<int>& v)
 {
-    srand(time(NULL));
+   srand(time(NULL));
 
-    quickSort(v, 0, v.size()-1, true);
+   quickSort(v, 0, v.size()-1, true);
 }

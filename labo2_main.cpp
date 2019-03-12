@@ -1,3 +1,11 @@
+/*********************************/
+/*  Gruppo 11                    */
+/*                               */
+/*  Klodiana Breza   (S4712271)  */
+/*  Andrea Celotto   (S4676081)  */
+/*  Giovanni Minotti (S4396239)  */
+/*********************************/
+
 // compilare con il comando seguente:
 // g++ -Wall -std=c++11 labo2_main.cpp labo2_aux.cpp labo2_sort.cpp -o labo2
 
@@ -20,7 +28,7 @@ void test (string nome_file) {
     high_resolution_clock::time_point t1, t2;
     double duration;
 
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<4; i++) {
         vector<int> v2 = v_disordinato;
         t1 = high_resolution_clock::now();
         insertionSort(v2);
@@ -28,8 +36,9 @@ void test (string nome_file) {
         duration = duration_cast<microseconds>( t2 - t1 ).count();
         cout << "insertion sort " << duration << endl;
     }
+    cout << endl;
 
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<4; i++) {
         vector<int> v1 = v_disordinato;
         t1 = high_resolution_clock::now();
         selectionSort(v1);
@@ -37,8 +46,9 @@ void test (string nome_file) {
         duration = duration_cast<microseconds>( t2 - t1 ).count();
         cout << "selection sort " << duration << endl;
     }
+    cout << endl;
 
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<4; i++) {
         vector<int> v3 = v_disordinato;
         t1 = high_resolution_clock::now();
         bubbleSort(v3);
@@ -46,8 +56,9 @@ void test (string nome_file) {
         duration = duration_cast<microseconds>( t2 - t1 ).count();
         cout << "bubble sort " << duration << endl;
     }
+    cout << endl;
 
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<4; i++) {
         vector<int> v4 = v_disordinato;
         t1 = high_resolution_clock::now();
         mergeSort(v4);
@@ -55,8 +66,9 @@ void test (string nome_file) {
         duration = duration_cast<microseconds>( t2 - t1 ).count();
         cout << "merge sort " << duration << endl;
     }
+    cout << endl;
 
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<4; i++) {
         vector<int> v5 = v_disordinato;
         t1 = high_resolution_clock::now();
         quickSortTrivial(v5);
@@ -64,8 +76,9 @@ void test (string nome_file) {
         duration = duration_cast<microseconds>(t2-t1).count();
         cout << "quick banale sort " << duration << endl;
     }
+    cout << endl;
 
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<4; i++) {
         vector<int> v6 = v_disordinato;
         t1 = high_resolution_clock::now();
         quickSortRandom(v6);
