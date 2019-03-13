@@ -1,11 +1,3 @@
-/*********************************/
-/*  Gruppo 11                    */
-/*                               */
-/*  Klodiana Breza   (S4712271)  */
-/*  Andrea Celotto   (S4676081)  */
-/*  Giovanni Minotti (S4396239)  */
-/*********************************/
-
 #include "labo2_aux.h"
 
 
